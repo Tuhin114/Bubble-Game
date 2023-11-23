@@ -1,6 +1,7 @@
 var timer = 60;
 var score = 0;
 var hitrn;
+var timerClear; // Declare timerClear in the global scope
 
 function increaseScore() {
   score += 10;
@@ -9,20 +10,20 @@ function increaseScore() {
 function makeBubble() {
   var clutter = "";
   for (var i = 1; i <= 220; i++) {
-    //To generate random number we use Math.floor(Math.random() * 10 as Math.random generates any random number between 0 & 1 and Math.floor make removes any digites after decimal of any float number
     clutter += `<div class="bubble">${Math.floor(Math.random() * 10)}</div>`;
   }
 
   document.querySelector("#pbtm").innerHTML = clutter;
 }
 function runTimer() {
-  var timerClear = setInterval(function () {
+  timerClear = setInterval(function () {
+    // Removed 'var' keyword here
     if (timer > 0) {
       timer--;
       document.querySelector("#timerVal").textContent = timer;
     } else {
       clearInterval(timerClear);
-      document.querySelector("#pbtm").innerHTML = `<h1>Game Over</h1>`;
+      document.querySelector("#pbtm").innerHTML = `<h1>Oops! Time up!</h1>`;
     }
   }, 1000);
 }
@@ -33,10 +34,13 @@ function getNewHit() {
 
 document.querySelector("#pbtm").addEventListener("click", function (details) {
   var clickedNumber = Number(details.target.textContent);
-  if ((clickedNumber = hitrn)) {
+  if (clickedNumber === hitrn) {
     increaseScore();
     makeBubble();
     getNewHit();
+  } else {
+    document.querySelector("#pbtm").innerHTML = `<h1>Oops! Wrong Bubble!</h1>`;
+    clearInterval(timerClear); // Stop the timer (accessible from the global scope)
   }
 });
 
