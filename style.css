@@ -103,4 +103,9 @@ body {
   .bubble {
     font-size: 14px;
   }
+  .elem {
+    display: flex;
+    align-items: center;
+    gap: 9%;
+  }
 }
