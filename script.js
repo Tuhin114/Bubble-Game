@@ -41,7 +41,7 @@ function updateNumberOfBubbles() {
 
   if (screenWidth < 768) {
     // Set a lower number of bubbles for mobile screens
-    numBubbles = 100;
+    numBubbles = 60;
   } else {
     // Use the original number of bubbles for larger screens
     numBubbles = 220;
