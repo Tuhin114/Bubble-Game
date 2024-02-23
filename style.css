@@ -86,13 +86,17 @@ body {
   background-color: rgb(36, 70, 36);
 }
 /* Media query for smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 532px) {
   #panel {
     width: 90%;
   }
 
   #ptop {
     padding: 0 9%;
+  }
+
+  #pbtm {
+    padding: 7px;
   }
 
   .elem h2,
